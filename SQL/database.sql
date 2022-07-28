@@ -4,11 +4,11 @@ create database movies;
 CREATE TABLE IF NOT EXISTS `movie` (
   `movie_id` int AUTO_INCREMENT  PRIMARY KEY,
   `color` varchar(50),
-  `country` varchar(50),
   `duration` int,
   `year` int,
   `title` varchar(150) NOT NULL,
-  `language` varchar(50) NOT NULL
+  `language` varchar(50) NOT NULL,
+  `country` varchar(50)
 );
 
 CREATE TABLE IF NOT EXISTS `genre` (
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `genre` (
 
 CREATE TABLE IF NOT EXISTS `director` (
   `director_id` int AUTO_INCREMENT  PRIMARY KEY,
-  `name` varchar(18) NOT NULL
+  `name` varchar(50) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS `movie_director` (
