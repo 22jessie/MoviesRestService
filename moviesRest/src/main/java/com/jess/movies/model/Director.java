@@ -5,10 +5,17 @@
  */
 package com.jess.movies.model;
 
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import org.hibernate.annotations.GenericGenerator;
@@ -17,7 +24,9 @@ import org.hibernate.annotations.GenericGenerator;
  *
  * @author jessica-22
  */
-public class Director {
+
+@Entity
+public class Director implements Serializable {
     
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO,generator="native")
@@ -28,4 +37,8 @@ public class Director {
     @NotBlank(message="Name cannot be blank")
     @Size(max=50,message="Name cannot be longer than 50 characters")
     private String name;
+    
+    @OneToMany(mappedBy="director",fetch=FetchType.LAZY,
+            cascade=CascadeType.PERSIST,targetEntity=Movie.class)
+    private Set<Movie> movies=new HashSet<>();
 }

@@ -5,12 +5,20 @@
  */
 package com.jess.movies.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -20,7 +28,8 @@ import org.hibernate.annotations.GenericGenerator;
  *
  * @author jessica-22
  */
-public class Movie {
+@Entity
+public class Movie implements Serializable {
     
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO,generator="native")
@@ -52,7 +61,19 @@ public class Movie {
     @Pattern(regexp="(^$|[0-9]{4})",message="Long is too long")
     private int year; 
     
-    private List<String> genres=new ArrayList<>();
+    @ManyToMany(fetch=FetchType.LAZY, cascade=CascadeType.PERSIST)
+    @JoinTable(name="movie_genre",
+            joinColumns={
+                @JoinColumn(name="id",referencedColumnName = "genre_id")
+            },
+            inverseJoinColumns={
+                @JoinColumn(name="id",referencedColumnName = "movie_id")
+            }
+    )
+    private List<Genre> genres=new ArrayList<>();
+    
+    @ManyToOne(fetch=FetchType.LAZY, optional=true)
+    @JoinColumn(name="director_id",referencedColumnName="id",nullable=true)
     private Director director;
     
 }
