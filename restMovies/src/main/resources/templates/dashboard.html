@@ -1,0 +1,143 @@
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head xmlns:th="http://www.thymeleaf.org">
+<title>PetClinic a Medical Category Flat Bootstrap responsive Website Template | Home :: w3layouts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="PetClinic Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="assets/css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="assets/css/style.css" rel='stylesheet' type='text/css' />
+<link href="assets/css/jess.css" rel='stylesheet' type='text/css' />
+<script src="assets/js/jquery.min.js"></script>
+<!--start-smoth-scrolling-->
+<script type="text/javascript" src="assets/js/move-top.js"></script>
+<script type="text/javascript" src="assets/js/easing.js"></script>
+<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+				});
+			});
+		</script>
+<!--start-smoth-scrolling-->
+<!--requried-jsfiles-for-owl-->
+		<link href="assets/css/owl.carousel.css" rel="stylesheet">
+			<script>
+				$(document).ready(function() {
+					$("#owl-demo").owlCarousel({
+						items : 5,
+						lazyLoad : true,
+						autoPlay : true,
+						pagination : false,
+					});
+				});
+			</script>
+			<script src="assets/js/owl.carousel.js"></script>
+		<!---//requried-jsfiles-for-owl-->
+		<!--script-->
+	<script src="assets/js/modernizr.custom.97074.js"></script>
+	<script src="assets/js/jquery.chocolat.js"></script>
+		<link rel="stylesheet" href="assets/css/chocolat.css" type="text/css" media="screen">
+		<!--light-box-files-->
+		<script type="text/javascript">
+		$(function() {
+			$('.g1 a').Chocolat();
+		});
+		</script>
+</head>
+<body>	
+	<!--header-starts-->
+	<div class="header" id="home">
+		<div class="container">
+			<div class="header-top">
+				<div class="col-md-6 header-left">
+					<ul>
+						<li><p>+1234 526 256 ,</p></li>
+						<li><p>+1234 526 256</p></li>
+					</ul>
+				</div>
+				<div class="col-md-6 header-right">
+					<ul>
+						<li><a href="#"><span class="fb"> </span></a></li>
+						<li><a href="#"><span class="twit"> </span></a></li>
+						<li><a href="#"><span class="pin"> </span></a></li>
+						<li><a href="#"><span class="rss"> </span></a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!--header-end-->
+	<!--banner-starts-->
+	<div>
+            <div id="dashboard">
+                <div class="dashboard-element" >
+                <a th:href="@{/admin/vets}">Veterinarians</a>
+                </div>
+                <div class="dashboard-element" >
+                    <a th:href="@{/admin/admins}">Admins</a>
+                </div>
+                <div class="dashboard-element" >
+                    <a href="">Services</a>
+                </div>
+                <div class="dashboard-element" >
+                <a href="">News</a>
+                </div>
+                <div class="dashboard-element" >
+                    <a href="">Contact</a>
+                </div>
+                <div class="dashboard-element" >
+                <a href="">Profile</a>
+                </div>
+                <div class="dashboard-element" >
+                    <a href="">Pets</a>
+                </div>
+                <div class="dashboard-element" >
+                <a th:href="@{/appmnt/display}">Appointments</a>
+                </div>
+                <div class="dashboard-element" >
+                    <a href="">Messages</a>
+                </div>                
+            </div>
+            <div th:replace="navbar :: navbar"></div>
+        </div>    
+                
+       </div>
+	<!--banner-starts-->
+	<!--script-for-menu-->
+		<script>
+			$("span.menu").click(function(){
+				$(" ul.navig").slideToggle("slow" , function(){
+				});
+			});
+		</script>
+	<!--script-for-menu-->
+	<!--FlexSlider-->
+	<link rel="stylesheet" href="assets/css/flexslider.css" type="text/css" media="screen" />
+	<script defer src="assets/js/jquery.flexslider.js"></script>
+	<script type="text/javascript">
+    $(window).load(function(){
+      $('.flexslider').flexslider({
+        animation: "slide",
+        start: function(slider){
+          $('body').removeClass('loading');
+        }
+      });
+    });
+  </script>
+	<!--End-slider-script-->
+	<!--footer-starts-->
+        <div th:replace="footer :: footer">...</div>
+	<!--footer-end-->	
+</body>
+</html>
