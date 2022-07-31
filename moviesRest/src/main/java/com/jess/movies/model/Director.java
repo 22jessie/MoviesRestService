@@ -5,6 +5,7 @@
  */
 package com.jess.movies.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -18,6 +19,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.Getter;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
@@ -26,6 +30,9 @@ import org.hibernate.annotations.GenericGenerator;
  */
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class Director implements Serializable {
     
     @Id
@@ -38,6 +45,7 @@ public class Director implements Serializable {
     @Size(max=50,message="Name cannot be longer than 50 characters")
     private String name;
     
+    @JsonIgnore 
     @OneToMany(mappedBy="director",fetch=FetchType.LAZY,
             cascade=CascadeType.PERSIST,targetEntity=Movie.class)
     private Set<Movie> movies=new HashSet<>();

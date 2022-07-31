@@ -22,6 +22,9 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
@@ -29,13 +32,17 @@ import org.hibernate.annotations.GenericGenerator;
  * @author jessica-22
  */
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class Movie implements Serializable {
     
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO,generator="native")
     @GenericGenerator(name="native",strategy="native")
     @Column(name="movie_id")
-    private int id;
+    private int movieId;
+    //private int id; //Error
     
     @NotBlank(message="Title cannot be blank")
     @Size(max=150,message="Title cannot exceed 150 characters")
@@ -64,16 +71,20 @@ public class Movie implements Serializable {
     @ManyToMany(fetch=FetchType.LAZY, cascade=CascadeType.PERSIST)
     @JoinTable(name="movie_genre",
             joinColumns={
-                @JoinColumn(name="id",referencedColumnName = "genre_id")
+                @JoinColumn(name="movieId",referencedColumnName = "movie_id")
+                //An error is throw
+                //@JoinColumn(name="id",referencedColumnName = "movie_id") 
+                    
+                    
             },
             inverseJoinColumns={
-                @JoinColumn(name="id",referencedColumnName = "movie_id")
+                @JoinColumn(name="id",referencedColumnName = "genre_id")
             }
     )
     private List<Genre> genres=new ArrayList<>();
     
     @ManyToOne(fetch=FetchType.LAZY, optional=true)
-    @JoinColumn(name="director_id",referencedColumnName="id",nullable=true)
+    @JoinColumn(name="id",referencedColumnName="director_id",nullable=true)
     private Director director;
     
 }

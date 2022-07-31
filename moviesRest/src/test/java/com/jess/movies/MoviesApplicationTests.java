@@ -1,10 +1,10 @@
-package com.jess.vet;
+package com.jess.movies;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class VetApplicationTests {
+class MoviesApplicationTests {
 
 	@Test
 	void contextLoads() {

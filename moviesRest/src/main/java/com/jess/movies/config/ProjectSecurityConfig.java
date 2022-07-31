@@ -18,14 +18,11 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
  
     @Override
     protected void configure(HttpSecurity http) throws Exception{
-        http.csrf().ignoringAntMatchers("/public/**")
+        http.csrf()
                 .and()
                 .authorizeRequests()
                 .mvcMatchers("/").permitAll()
-                .mvcMatchers("/public/**").permitAll()
-                .mvcMatchers("/login").permitAll()
-                .and().formLogin().loginPage("/login")
-                .defaultSuccessUrl("/dashboard").failureUrl("/login?error=true").permitAll()
-                .and().logout().logoutSuccessUrl("/login?logout=true").invalidateHttpSession(true).permitAll();
+                .mvcMatchers("/dir/**").permitAll();
+                
     }
 }

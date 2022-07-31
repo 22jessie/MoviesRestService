@@ -18,6 +18,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
@@ -26,6 +29,9 @@ import org.hibernate.annotations.GenericGenerator;
  */
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class Genre implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO,generator="native")
@@ -37,7 +43,7 @@ public class Genre implements Serializable {
     @Size(max=18,message="Genre cannot be longer than 18 characters")
     private String genre;
     
-    @ManyToMany(mappedBy="movies",fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
+    @ManyToMany(mappedBy="genres",fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
     private Set<Movie> movies=new HashSet<>();
     
 }
