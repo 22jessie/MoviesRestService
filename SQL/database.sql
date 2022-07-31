@@ -8,7 +8,11 @@ CREATE TABLE IF NOT EXISTS `movie` (
   `year` int,
   `title` varchar(150) NOT NULL,
   `language` varchar(50) NOT NULL,
-  `country` varchar(50)
+  `country` varchar(50),
+  `director_id_fk` int,
+  
+  FOREIGN KEY (director_id_fk) REFERENCES director(director_id)
+  
 );
 
 CREATE TABLE IF NOT EXISTS `genre` (
