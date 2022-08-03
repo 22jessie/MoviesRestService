@@ -1,2 +1,2 @@
-./moviesRest/target/classes/application.properties
-./moviesRest/src/main/resources/application.properties
+moviesRest/target/classes/application.properties
+moviesRest/src/main/resources/application.properties

@@ -6,6 +6,7 @@
 package com.jess.movies.repositories;
 
 import com.jess.movies.model.Movie;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,6 +17,22 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Integer>{
+    
+    public List<Movie> getMoviesByYear(int year);
+    
+    public List<Movie> getMovieByName(String name);
+    
+    public List<Movie> getMoviesByCountry(String country);
+    
+    public List<Movie> getMoviesByLanguage(String lang);
+    
+    public boolean deleteById(int id);
+    
+    public boolean deleteByName(String name);
+    
+    public List<Movie> getMoviesByYearGreaterThan(int y);
+    
+    public List<Movie> getMoviesByYearLessThan(int y);
     
     
     

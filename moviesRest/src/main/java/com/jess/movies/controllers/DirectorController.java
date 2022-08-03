@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author jessica-22
  */
 
-@RequestMapping(path="dir", produces={
+@RequestMapping(path="/api/dir", produces={
     MediaType.APPLICATION_JSON_VALUE,
     MediaType.APPLICATION_XML_VALUE
     
@@ -54,6 +54,8 @@ public class DirectorController {
     public void deleteDirector(){
     
     }
+    
+    
     
     
 }
