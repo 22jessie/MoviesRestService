@@ -34,10 +34,6 @@ public class MovieService {
         return movieRepo.getMoviesByYear(year);
     }
     
-    public List<Movie> getMovieByName(String n){
-        return movieRepo.getMovieByName(n);
-    }
-    
     public List<Movie> getMoviesByCountry(String c){
         return movieRepo.getMoviesByCountry(c);
     }
@@ -55,7 +51,7 @@ public class MovieService {
     }
 
     public boolean deleteByName(String name) {
-        return movieRepo.deleteByName(name);
+        return movieRepo.deleteByTitle(name);
     }
 
     public boolean deleteById(int id) {
@@ -63,6 +59,10 @@ public class MovieService {
     }
 
     public boolean createMovie(Movie movie) {
+        return  movieRepo.save(movie) != null;
+    }
+
+    public List<Movie> getMovieByTitle(String name) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

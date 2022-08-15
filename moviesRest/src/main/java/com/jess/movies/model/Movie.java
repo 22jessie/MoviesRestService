@@ -5,9 +5,12 @@
  */
 package com.jess.movies.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -41,8 +44,7 @@ public class Movie implements Serializable {
     @GeneratedValue(strategy=GenerationType.AUTO,generator="native")
     @GenericGenerator(name="native",strategy="native")
     @Column(name="movie_id")
-    private int movieId;
-    //private int id; //Error
+    private int id;
     
     @NotBlank(message="Title cannot be blank")
     @Size(max=150,message="Title cannot exceed 150 characters")
@@ -71,20 +73,16 @@ public class Movie implements Serializable {
     @ManyToMany(fetch=FetchType.LAZY, cascade=CascadeType.PERSIST)
     @JoinTable(name="movie_genre",
             joinColumns={
-                @JoinColumn(name="movieId",referencedColumnName = "movie_id")
-                //An error is throw
-                //@JoinColumn(name="id",referencedColumnName = "movie_id") 
-                    
-                    
+                @JoinColumn(name="movie_id",referencedColumnName = "movie_id")
             },
             inverseJoinColumns={
-                @JoinColumn(name="id",referencedColumnName = "genre_id")
+                @JoinColumn(name="genre_id",referencedColumnName = "genre_id")
             }
     )
-    private List<Genre> genres=new ArrayList<>();
+    private Set<Genre> genres=new HashSet<Genre>();
     
-    @ManyToOne(fetch=FetchType.LAZY, optional=true)
-    @JoinColumn(name="id",referencedColumnName="director_id",nullable=true)
+    @ManyToOne(fetch=FetchType.EAGER, optional=true)
+    @JoinColumn(name="director_id_fk",referencedColumnName="director_id",nullable=true)
     private Director director;
     
 }

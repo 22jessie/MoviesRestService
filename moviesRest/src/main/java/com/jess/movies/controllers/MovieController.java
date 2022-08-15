@@ -60,7 +60,7 @@ public class MovieController {
     
     @GetMapping("/name/{name}")
     public List<Movie> getMovieByName(@PathVariable("name")String name){
-        return moviesServ.getMovieByName(name);
+        return moviesServ.getMovieByTitle(name);
     }
     
     @DeleteMapping("/delete-id/{id}")

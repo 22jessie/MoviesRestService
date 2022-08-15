@@ -20,15 +20,13 @@ public interface MovieRepository extends JpaRepository<Movie, Integer>{
     
     public List<Movie> getMoviesByYear(int year);
     
-    public List<Movie> getMovieByName(String name);
-    
     public List<Movie> getMoviesByCountry(String country);
     
     public List<Movie> getMoviesByLanguage(String lang);
     
     public boolean deleteById(int id);
     
-    public boolean deleteByName(String name);
+    public boolean deleteByTitle(String name);
     
     public List<Movie> getMoviesByYearGreaterThan(int y);
     
