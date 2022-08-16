@@ -46,7 +46,7 @@ public class Director implements Serializable {
     private String name;
     
     @JsonIgnore 
-    @OneToMany(mappedBy="director",fetch=FetchType.LAZY,
+    @OneToMany(mappedBy="director",fetch=FetchType.EAGER,
             cascade=CascadeType.PERSIST,targetEntity=Movie.class)
     private Set<Movie> movies=new HashSet<>();
 }

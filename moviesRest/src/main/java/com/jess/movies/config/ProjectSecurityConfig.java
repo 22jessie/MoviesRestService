@@ -18,11 +18,11 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
  
     @Override
     protected void configure(HttpSecurity http) throws Exception{
-        http.csrf()
-                .and()
+        http.csrf().disable()
+                
                 .authorizeRequests()
                 .mvcMatchers("/").permitAll()
-                .mvcMatchers("/dir/**").permitAll();
+                .mvcMatchers("/api/**").permitAll();
                 
     }
 }
