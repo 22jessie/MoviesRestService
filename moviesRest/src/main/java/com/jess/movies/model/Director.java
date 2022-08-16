@@ -35,10 +35,12 @@ import org.hibernate.annotations.GenericGenerator;
 @NoArgsConstructor
 public class Director implements Serializable {
     
+    
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO,generator="native")
     @GenericGenerator(name="native",strategy="native")
     @Column(name="director_id")
+    @JsonIgnore
     private int id;
     
     @NotBlank(message="Name cannot be blank")

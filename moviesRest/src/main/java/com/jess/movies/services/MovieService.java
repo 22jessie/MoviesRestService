@@ -47,7 +47,7 @@ public class MovieService {
     }
     
     public List<Movie> getMoviesAfterYear(int y){
-        return movieRepo.getMoviesByYearLessThan(y);
+        return movieRepo.getMoviesByYearGreaterThan(y);
     }
 
     public boolean deleteByName(String name) {
@@ -63,7 +63,7 @@ public class MovieService {
     }
 
     public List<Movie> getMovieByTitle(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return movieRepo.findMovieByTitleContaining(name);
     }
     
     

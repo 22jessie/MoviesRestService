@@ -44,6 +44,7 @@ public class Movie implements Serializable {
     @GeneratedValue(strategy=GenerationType.AUTO,generator="native")
     @GenericGenerator(name="native",strategy="native")
     @Column(name="movie_id")
+    @JsonIgnore
     private int id;
     
     @NotBlank(message="Title cannot be blank")

@@ -38,6 +38,7 @@ public class Genre implements Serializable {
     @GeneratedValue(strategy=GenerationType.AUTO,generator="native")
     @GenericGenerator(name="native",strategy="native")
     @Column(name="genre_id")
+    @JsonIgnore
     private int id;
     
     @NotBlank(message="Genre cannot be blank")

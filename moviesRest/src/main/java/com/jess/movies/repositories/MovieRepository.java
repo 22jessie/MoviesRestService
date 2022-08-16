@@ -31,8 +31,7 @@ public interface MovieRepository extends JpaRepository<Movie, Integer>{
     public List<Movie> getMoviesByYearGreaterThan(int y);
     
     public List<Movie> getMoviesByYearLessThan(int y);
-    
-    
-    
+
+    public List<Movie> findMovieByTitleContaining(String name);
     
 }

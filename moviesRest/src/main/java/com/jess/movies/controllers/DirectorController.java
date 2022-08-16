@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author jessica-22
  */
 
-@RequestMapping(path="/api", produces={
+@RequestMapping(path="/api/directors", produces={
     MediaType.APPLICATION_JSON_VALUE,
     MediaType.APPLICATION_XML_VALUE
     
@@ -42,33 +42,33 @@ public class DirectorController {
         this.directorServ=ds;
     }
     
-    @GetMapping("/directors")
+    @GetMapping("/all")
     public List<Director> getDirectors(){
         return directorServ.getAllDirectors();
     }
     
-    @GetMapping("/directors/{id}")
-    public Director getDirectorById(@PathVariable int id){
-        return directorServ.getDirectorById(id).get();
-    }
-    
-    @GetMapping("/directors/all")
-    public Director getDirectorById(@RequestParam(value="name") String name){
+    @GetMapping("/by-name")
+    public Director getDirectorByName(@RequestParam(value="name") String name){
         return directorServ.getDirectorByName(name).get();  
     }
     
-    @PostMapping("directors")
+    @PostMapping("/all")
     public ResponseEntity<String> addDirector(@Valid @RequestBody Director d){
         directorServ.save(d);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body("Director Saved!");
     }
     
-    @DeleteMapping("directors/{id}")
-    public void deleteDirector(@PathVariable int id){
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteDirector(@PathVariable int id){
         Optional<Director> d = directorServ.getDirectorById(id);
         if(d.isPresent()){
             directorServ.deleteById(d.get().getId());
+            return ResponseEntity.status(HttpStatus.OK)
+                .body("Director Deleted!");
+        }else{
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body("Director was not found!");
         }
     }
     

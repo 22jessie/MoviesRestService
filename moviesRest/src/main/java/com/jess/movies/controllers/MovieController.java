@@ -42,6 +42,16 @@ public class MovieController {
         return moviesServ.getAll();
     }
     
+    @DeleteMapping("/all")
+    public boolean deleteById(@PathVariable("id") int id){
+        return moviesServ.deleteById(id);
+    }
+    
+    @PostMapping("/all")
+    public boolean addMovie(@Valid @RequestBody Movie movie){
+        return moviesServ.createMovie(movie);
+    }
+    
     @GetMapping("/year/{year}")
     public List<Movie> getMoviesByYear(@PathVariable("year") int year){
         return moviesServ.getMoviesByYear(year);
@@ -57,18 +67,12 @@ public class MovieController {
         return moviesServ.getMoviesByLanguage(lang);
     }
     
-    
     @GetMapping("/name/{name}")
     public List<Movie> getMovieByName(@PathVariable("name")String name){
         return moviesServ.getMovieByTitle(name);
     }
     
-    @DeleteMapping("/delete-id/{id}")
-    public boolean deleteById(@PathVariable("id") int id){
-        return moviesServ.deleteById(id);
-    }
-    
-    @DeleteMapping("/delete-name/{name}")
+    @DeleteMapping("/delete-name")
     public boolean deleteByName(@PathVariable("name") String name){
         return moviesServ.deleteByName(name);
     }
@@ -82,11 +86,4 @@ public class MovieController {
     public List<Movie> getMoviesAfterYear(@PathVariable("year") int year){
         return moviesServ.getMoviesAfterYear(year);
     }
-    
-    @PostMapping("/add")
-    @ResponseStatus(HttpStatus.CREATED)
-    public boolean addMovie(@Valid @RequestBody Movie movie){
-        return moviesServ.createMovie(movie);
-    }
-
 }

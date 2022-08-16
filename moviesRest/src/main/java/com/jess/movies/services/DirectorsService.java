@@ -30,6 +30,7 @@ public class DirectorsService {
         return directorRepo.findAll();
     }
 
+    
     public Optional<Director> getDirectorById(int id) {
         return directorRepo.findById(id);
     }
